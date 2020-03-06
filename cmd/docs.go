@@ -51,12 +51,14 @@ func plugins() {
 	}
 
 	lister.Index = docgen.NewDoc(docgen.DocItem{
-		Name:     "Readme",
+		Name:     "_index",
 		DestPath: "docs/plugins",
 	}, logger.WithName("plugins"))
 
 	lister.Header = heredoc.Doc(`
-		# Supported Plugins
+		---
+		title: Supported Plugins
+		---
 		
 		For more information please click on the plugin name
 		<center>
@@ -70,14 +72,14 @@ func plugins() {
 	`)
 
 	lister.DocGeneratedHook = func(document *docgen.Doc) error {
-		relPath, err := filepath.Rel(lister.Index.Item.DestPath, document.Item.DestPath)
-		if err != nil {
-			return errors.WrapIff(err, "failed to determine relpath for %s", document.Item.DestPath)
-		}
+		//relPath, err := filepath.Rel(lister.Index.Item.DestPath, document.Item.DestPath)
+		//if err != nil {
+		//	return errors.WrapIff(err, "failed to determine relpath for %s", document.Item.DestPath)
+		//}
 
 		lister.Index.Append(fmt.Sprintf("| **[%s](%s)** | %s | %s | %s | [%s](%s) |",
 			document.DisplayName,
-			filepath.Join(relPath, document.Item.Name+".md"),
+			document.Item.Name+"/",
 			document.Item.Category,
 			document.Desc,
 			document.Status,
@@ -109,12 +111,14 @@ func crds() {
 	}
 
 	lister.Index = docgen.NewDoc(docgen.DocItem{
-		Name:     "Readme",
+		Name:     "_index",
 		DestPath: "docs/crds",
 	}, logger.WithName("crds"))
 
 	lister.Header = heredoc.Doc(`
-		# Available CRDs
+		---
+		title: Available CRDs
+		---
 		
 		For more information please click on the name
 		<center>

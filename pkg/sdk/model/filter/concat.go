@@ -20,8 +20,8 @@ import (
 )
 
 // +kubebuilder:object:generate=true
-// +docName:"[Concat Filter](https://github.com/fluent-plugins-nursery/fluent-plugin-concat)"
-// Fluentd Filter plugin to concatenate multiline log separated in multiple events.
+// +docName:"Concat filter"
+// [Concat Filter](https://github.com/fluent-plugins-nursery/fluent-plugin-concat): Fluentd Filter plugin to concatenate multiline log separated in multiple events.
 type _docConcat interface{}
 
 // +name:"Concat"
